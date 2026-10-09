@@ -1,3 +1,23 @@
+/* ---------- Fonts ---------- */
+/* One font, FiraCode Nerd Font, under three names. FiraCode is much wider
+   than the old fonts, so size-adjust shrinks it per role to keep the old look.
+   Change a percentage to make that whole role bigger or smaller. */
+/* FiraCode Nerd Font: labels, dates, chips: same size as before */
+@font-face { font-family: "FiraCode Nerd Font"; src: url("../fonts/FiraCode/FiraCodeNerdFont-Light.woff2") format("woff2"); font-weight: 300; font-display: swap; }
+@font-face { font-family: "FiraCode Nerd Font"; src: url("../fonts/FiraCode/FiraCodeNerdFont-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "FiraCode Nerd Font"; src: url("../fonts/FiraCode/FiraCodeNerdFont-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "FiraCode Nerd Font"; src: url("../fonts/FiraCode/FiraCodeNerdFont-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+/* FiraCode Display: headings, nav, buttons (were Oswald) */
+@font-face { font-family: "FiraCode Display"; src: url("../fonts/FiraCode/FiraCodeNerdFont-Light.woff2") format("woff2"); font-weight: 300; font-display: swap; size-adjust: 85%; }
+@font-face { font-family: "FiraCode Display"; src: url("../fonts/FiraCode/FiraCodeNerdFont-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; size-adjust: 85%; }
+@font-face { font-family: "FiraCode Display"; src: url("../fonts/FiraCode/FiraCodeNerdFont-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; size-adjust: 85%; }
+@font-face { font-family: "FiraCode Display"; src: url("../fonts/FiraCode/FiraCodeNerdFont-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; size-adjust: 85%; }
+/* FiraCode Text: body text (was EB Garamond) */
+@font-face { font-family: "FiraCode Text"; src: url("../fonts/FiraCode/FiraCodeNerdFont-Light.woff2") format("woff2"); font-weight: 300; font-display: swap; size-adjust: 75%; }
+@font-face { font-family: "FiraCode Text"; src: url("../fonts/FiraCode/FiraCodeNerdFont-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; size-adjust: 75%; }
+@font-face { font-family: "FiraCode Text"; src: url("../fonts/FiraCode/FiraCodeNerdFont-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; size-adjust: 75%; }
+@font-face { font-family: "FiraCode Text"; src: url("../fonts/FiraCode/FiraCodeNerdFont-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; size-adjust: 75%; }
+
 /* ---------- Tokens ---------- */
 :root {
   --bg: #0b0d10;
@@ -10,9 +30,9 @@
   --accent: #6aa9e0;
   --accent-soft: rgba(106, 169, 224, 0.12);
 
-  --display: "Oswald", "Arial Narrow", sans-serif;
-  --serif: "EB Garamond", Georgia, serif;
-  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --display: "FiraCode Display", ui-monospace, monospace;
+  --serif: "FiraCode Text", ui-monospace, monospace;
+  --mono: "FiraCode Nerd Font", ui-monospace, monospace;
 
   --gutter: clamp(16px, 5vw, 72px);
   --max: 1200px;
@@ -175,7 +195,7 @@ em { color: var(--ink); font-style: italic; }
   aspect-ratio: 4 / 3;
   border: 1px solid var(--line);
 }
-.media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease), opacity 0.8s; }
+.media img, .media video { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease), opacity 0.8s; }
 .media__placeholder {
   position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 6px;
   font-family: var(--display); text-transform: uppercase; letter-spacing: 0.24em; font-size: 0.8rem; color: var(--muted);

@@ -20,6 +20,26 @@
       };
       img.src = box.getAttribute("data-src");
     });
+    // Short looping clips (used instead of large GIFs): data-video lists the
+    // files, best format first, e.g. "clip.webm clip.mp4".
+    scope.querySelectorAll(".media[data-video]").forEach(function (box) {
+      var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var video = document.createElement("video");
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.autoplay = !still;
+      video.controls = still; // reduced motion: don't autoplay, let the viewer press play
+      video.setAttribute("aria-label", box.getAttribute("data-alt") || "");
+      video.addEventListener("loadeddata", function () { box.classList.add("has-image"); });
+      box.getAttribute("data-video").split(/\s+/).forEach(function (src) {
+        var source = document.createElement("source");
+        source.src = src;
+        source.type = /\.webm$/i.test(src) ? "video/webm" : "video/mp4";
+        video.appendChild(source);
+      });
+      box.appendChild(video);
+    });
   }
   loadMedia(document);
 
@@ -162,6 +182,7 @@
       var finish = function () {
         dialog.classList.remove("is-closing");
         dialog.close();
+        pmBody.innerHTML = ""; // stops any playing video
         document.body.style.overflow = "";
         if (opener) opener.focus();
       };
